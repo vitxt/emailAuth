@@ -1,7 +1,6 @@
 package com.tedorodev.emailauth.controller;
 
-import com.tedorodev.emailauth.dto.UserDTO;
-import com.tedorodev.emailauth.model.User;
+import com.tedorodev.emailauth.dto.OTPDTO;
 import com.tedorodev.emailauth.service.EmailService;
 import com.tedorodev.emailauth.service.UserService;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -9,18 +8,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class SignUpController {
+public class EmailController {
     private final EmailService emailService;
     private final UserService userService;
-    public SignUpController( UserService userService, EmailService emailService) {
+    public EmailController(UserService userService, EmailService emailService) {
         this.userService = userService;
         this.emailService = emailService;
     }
 
-    @PostMapping("/register")
-    public void signUp(@RequestBody UserDTO userDTO) {
-        if (emailService.validateEmail(userDTO)) {
-            userService.RegisterUser(userDTO);
-        }
+    @PostMapping("/code")
+    public void signUp(@RequestBody OTPDTO otpDTO) {
+
     }
 }
+

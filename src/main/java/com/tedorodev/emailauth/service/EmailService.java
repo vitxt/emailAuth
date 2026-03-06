@@ -3,15 +3,10 @@ package com.tedorodev.emailauth.service;
 import com.tedorodev.emailauth.dto.UserDTO;
 import org.springframework.stereotype.Service;
 
-import java.security.SecureRandom;
-import java.security.Security;
 import java.util.HashSet;
-import java.util.stream.Collectors;
-
-import static org.springframework.security.crypto.keygen.KeyGenerators.secureRandom;
 
 @Service
-public class Validation {
+public class EmailService {
     private static HashSet<String> emailDomains = new HashSet<String>();
     static {
             // Major Federal and State Universities
@@ -44,12 +39,5 @@ public class Validation {
         } else {
         return false;
         }
-    }
-    public final void emailConfirmation(String email) {
-        SecureRandom secureRandom = new SecureRandom();
-        String otp = secureRandom.ints(6,0,10)
-                .mapToObj(String::valueOf)
-                .collect(Collectors.joining());
-
     }
 }
